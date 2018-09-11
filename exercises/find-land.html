@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Find Land - Array Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/findLand.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>Find Land - A JavaScript Technical Exercise</h1>
+		<p><strong>Problem:</strong> Find the number of islands in the "map" where land is 1 and water is 0. Islands are where land is connected vertically or horizontally.
+            To test knowledge of arrays, scope, closures, IIFE, boolean, and comparison operators. Output logged to the console.</p>
+
+        <div>The "map" is shaped like this:</div>
+        <blockquote>
+            <samp>
+                <div>1 1 0 1 1</div>
+                <div>1 0 0 0 0</div>
+                <div>0 0 1 0 1</div>
+                <div>1 0 0 0 1</div>
+            </samp>
+        </blockquote>
+
+        <hr/>
+        <p><strong>Solution:</strong> Place the "map" in an array of arrays to pass into a function. This function then checks the value at each index
+            with a nested loop. It then checks for the following criteria:
+        </p>
+        <ol>
+            <li>This index has land (true)</li>
+            <li>The previous index has water or nothing</li>
+            <li>The above index has water or nothing</li>
+        </ol>
+        <p>If it passes the criteria check, then this index is the first encounter of land. Add it to the count. Ignore anything
+            that does not meet the above criteria. Rinse, repeat.
+        </p>
+
+        <h3 id="answer"></h3>
+        
+        <hr/>
+        <h3>Log Output</h3>
+        <ol id="output"></ol>
+
+	</div>
+</body>
+
+</html>

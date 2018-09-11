@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Property Taxes &amp; Assessments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/tax-assessments.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Property Taxes &amp; Assessments Component</h1>
+        <hr />
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-5 pd-tax-summary">
+                <div class="wrap-tax-year">
+                    <div>Tax Year</div>
+                    <div class="h3">2017</div>
+                </div>
+
+                <div class="wrap-tax-proptax">
+                    <div>Property Taxes</div>
+                    <div class="h3">
+                        $12,735
+                        <small><strong class="text-success">(+5.61%)</strong></small>
+                    </div>
+                </div>
+
+                <div class="wrap-tax-assessment">
+                    <div>Assessment</div>
+                    <div class="h3">
+                        $1,019,031
+                        <small><strong class="text-success">(+6.17%)</strong></small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-md-7 pd-tax-table">
+                <div id="taxtable" class="table-responsive">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="font-size: medium">Tax &amp; Assessments</th>
+                                <th class="text-right" style="font-size: medium">2017</th>
+                                <th class="text-right" style="font-size: medium">2016</th>
+                                <th class="text-right" style="font-size: medium">2015</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-size: medium">Tax</td>
+                                <td class="text-right">
+                                    $12,735
+                                    <br>  <small><strong class="text-success">(+5.61%)</strong></small>
+                                </td>
+                                <td class="text-right">
+                                    $12,058
+                                    <br> <small><strong class="text-success">(+3.80%)</strong></small>
+                                </td>
+
+                                <td class="text-right">$11,617</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: medium">Assessment</td>
+                                <td class="text-right">
+                                    $1,019,031
+                                    <br>  <small><strong class="text-success">(+6.17%)</strong></small>
+                                </td>
+                                <td class="text-right">
+                                    $959,836
+                                    <br>  <small><strong class="text-success">(+2.66%)</strong></small>
+                                </td>
+                                <td class="text-right">
+                                    $935,000
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-size: medium">Land Assessment</td>
+                                <td class="text-right">$600,621</td>
+                                <td class="text-right">$588,845</td>
+                                <td class="text-right">$580,000</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-size: medium">Total Improvements</td>
+                                <td class="text-right">$418,410</td>
+                                <td class="text-right">$370,991</td>
+                                <td class="text-right">$355,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-5 col-xs-12">
+                <div class="sample-chart">
+                    <div class="bar bar-blue">Sample</div>
+                    <div class="bar bar-red">Sample</div>
+                    <div class="bar bar-gold">Sample</div>
+                </div>
+            </div>
+            <div class="col-md-7 col-xs-12">
+                <div class="sample-chart">
+                    <div class="bar bar-blue">Sample</div>
+                    <div class="bar bar-gold">Sample</div>
+                    <div class="bar bar-red">Sample</div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pd-section">
+                    <h4>Details:</h4>
+                    <ul class="group-list">
+                        <li>
+                            <strong>APN: </strong>
+                            <span>111-111-000-0</span>
+                        </li>
+                        <li>
+                            <strong>Tax Area Code: </strong>
+                            <span>94549</span>
+                        </li>
+                        <li>
+                            <strong>Legal Description: </strong>
+                            <span>Tract 3300 Lot 46</span>
+                        </li>
+                        <li>
+                            <strong>Lot: </strong>
+                            <span>46</span>
+                        </li>
+                        <li>
+                            <strong>Parcel ID: </strong>
+                            <span>111000111</span>
+                        </li>
+                        <li>
+                            <strong>Document Number: </strong>
+                            <span>136720</span>
+                        </li>
+                        <li>
+                            <strong>Last Sale Price: </strong>
+                            <span>$935,000</span>
+                        </li>
+                        <li>
+                            <strong>Last Sale Date: </strong>
+                            <span>07/29/2014</span>
+                        </li>
+                        <li>
+                            <strong>Taxable Value: </strong>
+                            <span>$1,012,031</span>
+                        </li>
+                        <li>
+                            <strong>Tax Exemption Amount: </strong>
+                            <span>$7,000</span>
+                        </li>
+                        <li>
+                            <strong>Homestead Tax Exemption: </strong>
+                            <span>Homestead</span>
+                        </li>
+                        <li>
+                            <strong>Fire Tax Distrcit: </strong>
+                            <span>Contra Costa</span>
+                        </li>
+                        <li>
+                            <strong>Water Agenct Tax District: </strong>
+                            <span>Contra Costa</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="xsDeviceTest"><!-- Mobile device helper --></div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+.timeline {
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+    .timeline .event {
+        margin-left: 40px;
+        position: relative;
+    }
+
+        .timeline .event .inner {
+            padding: 6px 0;
+            position: relative;
+        }
+
+        .timeline .event:before {
+            background: #ccc;
+            border-radius: 2px;
+            bottom: -10px;
+            content: "";
+            height: 100%;
+            left: -30px;
+            position: absolute;
+            width: 2px;
+        }
+
+        .timeline .event:after {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            content: "";
+            width: 10px;
+            height: 10px;
+            left: -34px;
+            position: absolute;
+            top: 10px;
+        }
+
+        .timeline .event:nth-last-child(1):before {
+            display: none;
+        }

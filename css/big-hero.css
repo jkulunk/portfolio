@@ -1,0 +1,18 @@
+
+section {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+    background-size: cover;
+    overflow:hidden;
+}
+
+#section1 {
+    background-image:url(../images/ferry-ride.jpg);
+    /*background-attachment: fixed;*/
+}
+
+#section2 {
+    background-image: url(../images/colorado.jpg);
+    /*background-attachment: fixed;*/
+}

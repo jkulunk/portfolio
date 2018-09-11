@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Icon Picker</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+		  crossorigin="anonymous">
+
+	<style>
+		#iconPicker-icons {
+			max-height: 400px;
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+
+			#iconPicker-modal button {
+				margin: 0 6px 6px 0;
+			}
+
+		#iconPicker-clear {
+			position: absolute;
+			z-index: 10;
+			right: 10px;
+			top: 10px;
+			display: none;
+		}
+
+
+		#iconPicker-clear2 {
+			display:none;
+		}
+
+
+	</style>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+	<script>
+		/*
+			Need to get all icons
+
+
+			Usage
+			=====
+
+		*/
+		var MTXUI = MTXUI || {};
+
+		MTXUI.iconPicker = (function () {
+			var _options = {};
+
+			var icons = [
+				"fas fa-address-book",
+				"far fa-address-book",
+				"fas fa-address-card",
+				"far fa-address-card",
+				"fas fa-adjust",
+				"fas fa-align-center",
+				"fas fa-align-justify",
+				"fas fa-align-left",
+				"fas fa-align-right",
+				"fas fa-allergies",
+				"fas fa-ambulance",
+				"fas fa-american-sign-language-interpreting",
+				"fas fa-anchor",
+				"fas fa-angle-double-down",
+				"fas fa-angle-double-left",
+				"fas fa-angle-double-right",
+				"fas fa-angle-double-up",
+				"fas fa-angle-down",
+				"fas fa-angle-left",
+				"fas fa-angle-right",
+				"fas fa-angle-up",
+				"fas fa-archive",
+				"fas fa-arrow-alt-circle-down",
+				"far fa-arrow-alt-circle-down",
+				"fas fa-arrow-alt-circle-left",
+				"far fa-arrow-alt-circle-left",
+				"fas fa-arrow-alt-circle-right",
+				"far fa-arrow-alt-circle-right",
+				"fas fa-arrow-alt-circle-up",
+				"far fa-arrow-alt-circle-up",
+				"fas fa-arrow-circle-down",
+				"fas fa-arrow-circle-left",
+				"fas fa-arrow-circle-right",
+				"fas fa-arrow-circle-up",
+				"fas fa-arrow-down",
+				"fas fa-arrow-left",
+				"fas fa-arrow-right",
+				"fas fa-arrows-alt",
+				"fas fa-arrows-alt-h",
+				"fas fa-arrows-alt-v",
+				"fas fa-arrow-up",
+				"fas fa-assistive-listening-systems",
+				"fas fa-asterisk",
+				"fas fa-at",
+				"fas fa-audio-description",
+				"fas fa-backward",
+				"fas fa-balance-scale",
+				"fas fa-ban",
+				"fas fa-band-aid",
+				"fas fa-barcode",
+				"fas fa-bars",
+				"fas fa-baseball-ball",
+				"fas fa-basketball-ball",
+				"fas fa-bath",
+				"fas fa-battery-empty",
+				"fas fa-battery-full",
+				"fas fa-battery-half",
+				"fas fa-battery-quarter",
+				"fas fa-battery-three-quarters",
+				"fas fa-bed",
+				"fas fa-beer",
+				"fas fa-bell",
+				"far fa-bell",
+				"fas fa-bell-slash",
+				"far fa-bell-slash",
+				"fas fa-bicycle",
+				"fas fa-binoculars",
+				"fas fa-birthday-cake",
+				"fas fa-blender",
+				"fas fa-blind",
+				"fas fa-bold",
+				"fas fa-bolt",
+				"fas fa-bomb",
+				"fas fa-book",
+				"fas fa-bookmark",
+				"far fa-bookmark",
+				"fas fa-book-open",
+				"fas fa-bowling-ball",
+				"fas fa-box",
+				"fas fa-boxes",
+				"fas fa-box-open",
+				"fas fa-braille",
+				"fas fa-briefcase",
+				"fas fa-briefcase-medical",
+				"fas fa-broadcast-tower",
+				"fas fa-broom",
+				"fas fa-bug",
+				"fas fa-building",
+				"far fa-building",
+				"fas fa-bullhorn",
+				"fas fa-bullseye",
+				"fas fa-burn",
+				"fas fa-bus",
+				"fas fa-calculator",
+				"fas fa-calendar",
+				"far fa-calendar",
+				"fas fa-calendar-alt",
+				"far fa-calendar-alt",
+				"fas fa-calendar-check",
+				"far fa-calendar-check",
+				"fas fa-calendar-minus",
+				"far fa-calendar-minus",
+				"fas fa-calendar-plus",
+				"far fa-calendar-plus",
+				"fas fa-calendar-times",
+				"far fa-calendar-times",
+				"fas fa-camera",
+				"fas fa-camera-retro",
+				"fas fa-capsules",
+				"fas fa-car",
+				"fas fa-caret-down",
+				"fas fa-caret-left",
+				"fas fa-caret-right",
+				"fas fa-caret-square-down",
+				"far fa-caret-square-down",
+				"fas fa-caret-square-left",
+				"far fa-caret-square-left",
+				"fas fa-caret-square-right",
+				"far fa-caret-square-right",
+				"fas fa-caret-square-up",
+				"far fa-caret-square-up",
+				"fas fa-caret-up",
+				"fas fa-cart-arrow-down",
+				"fas fa-cart-plus",
+				"fas fa-certificate",
+				"fas fa-chalkboard",
+				"fas fa-chalkboard-teacher",
+				"fas fa-chart-area",
+				"fas fa-chart-bar",
+				"far fa-chart-bar",
+				"fas fa-chart-line",
+				"fas fa-chart-pie",
+				"fas fa-check",
+				"fas fa-check-circle",
+				"far fa-check-circle",
+				"fas fa-check-square",
+				"far fa-check-square",
+				"fas fa-chess",
+				"fas fa-chess-bishop",
+				"fas fa-chess-board",
+				"fas fa-chess-king",
+				"fas fa-chess-knight",
+				"fas fa-chess-pawn",
+				"fas fa-chess-queen",
+				"fas fa-chess-rook",
+				"fas fa-chevron-circle-down",
+				"fas fa-chevron-circle-left",
+				"fas fa-chevron-circle-right",
+				"fas fa-chevron-circle-up",
+				"fas fa-chevron-down",
+				"fas fa-chevron-left",
+				"fas fa-chevron-right",
+				"fas fa-chevron-up",
+				"fas fa-child",
+				"fas fa-church",
+				"fas fa-circle",
+				"far fa-circle",
+				"fas fa-circle-notch",
+				"fas fa-clipboard",
+				"far fa-clipboard",
+				"fas fa-clipboard-check",
+				"fas fa-clipboard-list",
+				"fas fa-clock",
+				"far fa-clock",
+				"fas fa-clone",
+				"far fa-clone",
+				"fas fa-closed-captioning",
+				"far fa-closed-captioning",
+				"fas fa-cloud",
+				"fas fa-cloud-download-alt",
+				"fas fa-cloud-upload-alt",
+				"fas fa-code",
+				"far fa-comment",
+				"far fa-comment-alt",
+				"far fa-comment-dots",
+				"far fa-comments",
+				"far fa-compass",
+				"far fa-copy",
+				"far fa-copyright",
+				"far fa-credit-card",
+				"far fa-dot-circle",
+				"far fa-edit",
+				"far fa-envelope",
+				"far fa-envelope-open",
+				"far fa-eye",
+				"far fa-eye-slash",
+				"far fa-file",
+				"far fa-file-alt",
+				"far fa-file-archive",
+				"far fa-file-audio",
+				"far fa-file-code",
+				"far fa-file-excel",
+				"far fa-file-image",
+				"far fa-file-pdf",
+				"far fa-file-powerpoint",
+				"far fa-file-video",
+				"far fa-file-word",
+				"far fa-flag",
+				"far fa-folder",
+				"far fa-folder-open",
+				"far fa-font-awesome-logo-full",
+				"far fa-frown",
+				"far fa-futbol",
+				"far fa-gem",
+				"far fa-hand-lizard",
+				"far fa-hand-paper",
+				"far fa-hand-peace",
+				"far fa-hand-point-down",
+				"far fa-hand-pointer",
+				"far fa-hand-point-left",
+				"far fa-hand-point-right",
+				"far fa-hand-point-up",
+				"far fa-hand-rock",
+				"far fa-hand-scissors",
+				"far fa-handshake",
+				"far fa-hand-spock",
+				"far fa-hdd",
+				"far fa-heart",
+				"far fa-hospital",
+				"far fa-hourglass",
+				"far fa-id-badge",
+				"far fa-id-card",
+				"far fa-image",
+				"far fa-images",
+				"far fa-keyboard",
+				"far fa-lemon",
+				"far fa-life-ring",
+				"far fa-lightbulb",
+				"far fa-list-alt",
+				"far fa-map",
+				"far fa-meh",
+				"far fa-minus-square",
+				"far fa-money-bill-alt",
+				"far fa-moon",
+				"far fa-newspaper",
+				"far fa-object-group",
+				"far fa-object-ungroup",
+				"far fa-paper-plane",
+				"far fa-pause-circle",
+				"far fa-play-circle",
+				"far fa-plus-square",
+				"far fa-question-circle",
+				"far fa-registered",
+				"far fa-save",
+				"far fa-share-square",
+				"far fa-smile",
+				"far fa-snowflake",
+				"far fa-square",
+				"far fa-star",
+				"far fa-star-half",
+				"far fa-sticky-note",
+				"far fa-stop-circle",
+				"far fa-sun",
+				"far fa-thumbs-down",
+				"far fa-thumbs-up",
+				"far fa-times-circle",
+				"far fa-trash-alt",
+				"far fa-user",
+				"far fa-user-circle",
+				"far fa-window-close",
+				"far fa-window-maximize",
+				"far fa-window-minimize",
+				"far fa-window-restore"
+			];
+
+			var colorOptions = ['primary','success', 'info', 'warning', 'danger', 'default'];
+
+			var getIcons = function () {
+				var buttons = [];
+				var button;
+				for (var i = 0; i < icons.length; i++) {
+					button = '<button type="button" class="btn btn-default clickable" value="'
+                        + icons[i] + '" title="' + icons[i] + '">'
+                        + '<i class="fa-fw ' + icons[i] + '"></i>'
+                        + '</button>';
+					buttons.push(button);
+				}
+
+				document.getElementById(_options.iconsContainer).innerHTML = buttons.join('');
+			};
+
+			var setIcon = function (icon) {
+				document.getElementById(_options.inputIcon).value = icon;
+
+				if (_options.previewIcon) {	// show icon in preview. optional
+					document.getElementById(_options.previewIcon).className = icon;
+				}
+
+				handleClear();
+			};
+
+			var handleClear = function () {
+				if (_options.clearBtn) {
+					document.getElementById(_options.clearBtn).style.display = 'inline-block';
+					document.getElementById(_options.clearBtn).addEventListener('click', function (e) {
+						document.getElementById(_options.inputIcon).value = null;
+						document.getElementById(_options.previewIcon).className = '';
+						document.getElementById(_options.clearBtn).style.display = 'none';
+					});
+				}
+			};
+
+			var handleClick = function () {
+				document.getElementById(_options.iconsContainer).addEventListener('click', function (e) {
+					if (e.target && e.target.parentNode.matches('button.clickable')) {
+						$('#' + _options.modalContainer).modal('hide');
+						var icon = e.target.parentNode.value;
+						setIcon(icon);
+					}
+				});
+			};
+
+			var select = function (options) {
+				_options = options;
+				getIcons();
+				handleClick();
+				$('#' + _options.modalContainer).modal();
+
+				filter({
+					source: $('#' + _options.inputFilter),
+					target: $('#' + _options.iconsContainer + ' .clickable')
+				});
+
+				if (_options.colorOptions) {
+					showColorOptions();
+				}
+
+			};
+
+			var filter = function (options) {
+
+				var sourceText = '';
+
+				if (typeof options !== 'object') {
+					var options = {};
+				}
+
+				$(options.source).on('keyup', function () {
+
+					sourceText = $(this).val().toLowerCase();
+
+					$.each(options.target, function () {
+						if ($(this).attr('title').toLowerCase().indexOf(sourceText) > -1) {
+							$(this).css('display', 'inline-block');
+						} else {
+							$(this).css('display', 'none');
+						}
+					});
+
+				});
+			};
+
+			var showColorOptions = function () {
+				var buttons = [];
+				var button;
+
+				for (var i = 0; i < colorOptions.length; i++) {
+					button = "<button class='btn btn-sm btn-" + colorOptions[i] + "'"
+						+ " value ='text-" + colorOptions[i] + "'"
+						+ " title='text-" + colorOptions[i] + "'"
+						+ "><span class='far fa-fw'></span></button>";
+					buttons.push(button);
+				}
+
+				document.getElementById('iconPicker-colors').innerHTML = buttons.join('');
+
+			}
+
+			return {
+				select: select
+			}
+
+		}());
+
+
+		$(function () {
+
+			$('#btnEditIcon').on('click', function () {
+				MTXUI.iconPicker.select({
+					inputIcon: 'iconPicker-input',
+					previewIcon: 'iconPicker-preview',
+					clearBtn: 'iconPicker-clear',
+					modalContainer: 'iconPicker-modal',
+					iconsContainer: 'iconPicker-icons',
+					colorOptions: false,
+					inputFilter: 'iconPicker-filter'
+				});
+			});
+
+			$('#btnEditIcon2').on('click', function () {
+				MTXUI.iconPicker.select({
+					inputIcon: 'iconPicker-input2',
+					previewIcon: 'iconPicker-preview2',
+					clearBtn: 'iconPicker-clear2',
+					modalContainer: 'iconPicker-modal',
+					iconsContainer: 'iconPicker-icons',
+					inputFilter: 'iconPicker-filter'
+				});
+			});
+
+		});
+
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Icon Picker</h1>
+		<hr />
+
+		<div class="form-inline">
+			<div class="form-group">
+				<label>Icon: </label>
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span id="iconPicker-preview"></span>
+					</div>
+					<input id="iconPicker-input" type="text" class="form-control" placeholder="(none)" value="">
+					<span id="iconPicker-clear" class="fas fa-times-circle text-muted"></span>
+				</div>
+			</div>
+			<button id="btnEditIcon" type="submit" class="btn btn-primary">Edit</button>
+		</div>
+
+
+		<hr/>
+
+		<p>
+			<button id="btnEditIcon2" type="submit" class="btn btn-primary">
+				<span id="iconPicker-preview2"></span> Edit
+			</button>
+			<button id="iconPicker-clear2" class="btn btn-link">Clear</button>
+		</p>
+
+		<p>Written to a hidden input
+			<input id="iconPicker-input2" type="hidden" />
+		</p>
+
+
+
+	</div>
+
+	<div id="iconPicker-modal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					<div class="form-group">
+						<input id="iconPicker-filter" type="text" class="form-control" placeholder="Filter..." />
+					</div>
+
+					<div id="iconPicker-icons"></div>
+
+					<div id="iconPicker-colors"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

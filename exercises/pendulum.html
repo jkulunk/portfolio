@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Pendulum - Google Charts Exercise</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <style>
+        #chart {
+            width: 100%;
+            height: 400px;
+			margin-bottom:40px;
+        }
+		.sample {
+			background-color:#f0f0f0;
+			padding:20px;
+			border-radius:4px;
+			margin-bottom:20px;
+		}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+
+		var pendulum = {
+			options: {
+				num: 32, // number of pendulumns
+				time: 24, // time interval
+				length: 0.23 // lenght (meters) of first line
+			},
+            data: {},
+            render: {
+                column: function () {
+
+                    pendulum.render.column = new google.visualization.ColumnChart(document.getElementById('chart'));
+
+                    var options = {
+                        backgroundColor: {
+                            stroke: '#999',
+                            strokeWidth: 1,
+                            fill: '#eee'
+                        },
+                        title: 'Pendulum Line Lengths',
+                        titleTextStyle: { fontSize: 18 },
+                        tooltip: { showColorCode: true },
+                        hAxis: {
+                            title: 'Pendulums'
+                        },
+                        vAxis: {
+                            title: 'Line Length (cm)'
+                        },
+                        series: [
+                            { color: '#40b9e1' }
+                        ]
+                    };
+
+                    pendulum.render.column.draw(pendulum.data, options);
+                },
+
+                table: function () {
+
+                    pendulum.render.table = new google.visualization.ChartWrapper({
+                        chartType: 'Table',
+                        dataTable: pendulum.data,
+                        options: {
+                        	allowHtml: true,
+							width: '100%'
+                        },
+                        containerId: 'table'
+                    });
+
+                    pendulum.render.table.draw();
+
+                },
+                allCharts: function () {
+                    pendulum.getData();
+                    pendulum.render.column();
+                    pendulum.render.table();
+                }
+            },
+
+            getData: function () {
+
+                const PI = Math.PI;
+                var lineLengths = [];
+                var n = pendulum.options.num;
+                var t = pendulum.options.time;
+                var L = pendulum.options.length;
+                var g = 9.8; // gravity               
+                var k; // cycles before repeating
+
+                lineLengths.push(['Pendulum', 'Length']); // labels in first index
+
+            	/* First, find k for a given L in meters
+            		k = ( t / (2 PI sqrt(L/g) ) - n - 1)
+				*/
+                k = (t / (2 * PI * (Math.sqrt(L / g)))) - 1 - 1;
+
+            	/* Next, solve for each L
+					L = g( t / (2 PI (k + n + 1) ) )^2
+				*/
+                for (var i = 1; i < n + 1; i++) {
+                	L = g * (Math.pow((t / (2 * PI * (k + i + 1))), 2));
+
+                    L = L * 100; // x100 convert meter to cm
+                    L = Math.round(L * 100) / 100; // round to 2 decimal places
+                    lineLengths.push([i, L]);
+
+                    pendulum.data = google.visualization.arrayToDataTable(lineLengths);
+                }
+
+            	// output variables
+                $('#var-L').html(pendulum.options.length);
+                $('#var-n').html(pendulum.options.num);
+                $('#var-t').html(pendulum.options.time);
+                $('#var-g').html(g);
+                $('#var-k').html(k);
+            }
+
+        }
+
+        google.load('visualization', '1.0', {
+            'packages': ['corechart'],
+            'callback': pendulum.render.allCharts
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+		<h1>Pendulum Wave Calculator</h1>
+		<p>Google Charts and JavaScript exercise</p>
+		<hr />
+
+        <div id="chart"></div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-7">
+                <p>
+					I recently came across this <a href="https://www.youtube.com/watch?v=_8JMVl-_KKs" target="_blank">amazing physics experiment</a> that would be great for kids and be an interesting programming exercise.
+					My plan was to recreate the same experiment but choose any number of pendulums, time intervals, and initial lengths. The chart shown is the result.
+                </p>
+				<p><strong>Solution:</strong> First, you need to decide on the length of the first pendulum and solve for <var>k</var>. Then plug the value <var>k</var> into the formula to get lenghts for each line in the array.
+				The variables for the chart shown are:</p>
+				<ul class="list-unstyled">
+					<li>L = <span id="var-L"></span> first line length in meters</li>
+					<li>n = <span id="var-n"></span> number of lines in array</li>
+					<li>g = <span id="var-g"></span> gravity</li>
+					<li>t = <span id="var-t"></span> time interval in seconds</li>
+					<li>k = <span id="var-k"></span> number of cycles before repeating</li>
+				</ul>
+                
+				<p>The original formula
+					<img src="https://cdn.education.com/files/static/science-fair/pendulum-waves/pendulum-wave-equation-3.png" />
+                </p>
+                <p>Solving for <strong><var>k</var></strong><br/>
+                    <var>n1</var> is the first line in the array, value is 1.
+                </p>
+				<div class="sample">
+					<pre><code>k = (t / (2 * Math.PI * (Math.sqrt(L / g)))) - n1 - 1</code></pre>
+                </div>
+				
+				<p>Solving for each <strong><var>L</var></strong></p>
+				<div class="sample">
+					<pre><code>for (i = 1; i &lt; n + 1; i++) {
+	L = g * (Math.pow((t / (2 * PI * (k + i + 1))), 2));
+}</code></pre>
+				</div>
+
+				<p>
+					References:
+				</p>
+				<ul>
+					<li>https://www.education.com/science-fair/article/pendulum-waves/</li>
+					<li>https://www.mathpapa.com/algebra-calculator.html</li>
+					<li>https://www.youtube.com/watch?v=_8JMVl-_KKs</li>
+				</ul>
+
+            </div>
+            <div class="col-xs-12 col-sm-3 offset-sm-2">
+
+				<h4>Data Table</h4>
+                <div id="table"></div>
+
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,55 @@
+
+.pd-tax-summary .h3 {
+    margin: 4px 0;
+}
+
+.pd-tax-summary .wrap-tax-year,
+.pd-tax-summary .wrap-tax-proptax,
+.pd-tax-summary .wrap-tax-assessment {
+    width: 100%;
+    float: none;
+    margin-bottom: 20px;
+}
+
+.group-list {
+    list-style: none;
+    padding: 0;
+    -moz-column-gap: 20px;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.sample-chart {
+    border-bottom: 2px solid #ccc;
+}
+
+.sample-chart .bar {
+    color:#fff;
+    font-size: 0.8em;
+    line-height: 40px;
+    height: 40px;
+    margin: 20px 0;
+    padding-left: 10%;
+    border:2px solid white;
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+    box-shadow: 0 0 1px rgba(0,0,0,0.25);
+}
+
+.sample-chart .bar-blue {
+    width:90%;
+    background-color: #4285f4;
+}
+
+.sample-chart .bar-red {
+    width:60%;
+    background-color: #db4437;
+}
+
+.sample-chart .bar-gold {
+    width:50%;
+    background-color: #f4b400;
+}

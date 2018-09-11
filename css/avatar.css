@@ -1,0 +1,70 @@
+.avatar-details {
+    flex-direction: column;
+}
+
+.avatar-body { display: flex;}
+
+
+.monospace {
+    font-family: "Droid Sans Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.avatar {
+
+    margin-right: 20px;
+    background-color: #38424a;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    opacity: .75;
+    display:inline-block;
+    box-shadow: 1px 1px 3px 0 rgba(39,36,37,0.3);
+}
+
+.avatar .initials {
+    position: relative;
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.avatar-lg {
+    width: 80px;
+    height: 80px;
+}
+
+.avatar-lg .initials {
+    font-size: 40px;
+    line-height: 80px;
+}
+
+.avatar-md {
+    width: 60px;
+    height: 60px;
+}
+
+.avatar-md .initials {
+    font-size: 30px;
+    line-height: 60px;
+}
+
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+}
+
+.avatar-sm .initials {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.avatar-xs {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar-xs .initials {
+    font-size: 12px;
+    line-height: 20px;
+}

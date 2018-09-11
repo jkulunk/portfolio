@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mortgage Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../css/mortgage-calculator.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mortgage Calculator Component</h1>
+        <p>UI Sample with static graph placeholder.</p>
+        <hr />
+
+        <div class="wg_mortgagecalculator col-xs-12 col-md-4">
+
+            <div class="wg_title">
+                <h3>Mortgage Calculator</h3>
+                <h4>Affordability of 123 First St</h4>
+            </div>
+            <div class="wg_container">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <div class="sample-chart">
+                                    <div>$41,500</div>
+                                    <div class="small">Principal &amp; Interest</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-12 has-success text-center">
+                                <strong><span>$41,500</span>&nbsp;monthly</strong>
+                            </div>
+                        </div>
+                        <div class="wg_mortgagecalculator_form" role="form">
+                            <input type="hidden" name="hdnLoanAmount" value="7740000">
+
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <label>List Price:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="text" class="form-control input-sm">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-lg-6">
+                                    <label class="lbl-no-wrap">Down Payment: <span>$860,000.00</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="text" class="form-control input-sm">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-lg-6">
+                                    <label>&nbsp;</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm text-right">
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-lg-6">
+                                    <label>Interest Rate:</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm text-right">
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-lg-6">
+                                    <label>Term:</label>
+                                    <select class="form-control input-sm">
+                                        <option value="5">5 years</option>
+                                        <option value="10">10 years</option>
+                                        <option value="15">15 years</option>
+                                        <option value="20">20 years</option>
+                                        <option value="30" selected="selected">30 years</option>
+                                        <option value="40">40 years</option>
+                                        <option value="0">Interest Only</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <label>Property Tax (annual):</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="text" class="form-control input-sm">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="more-lnk collapsed" role="button" data-toggle="collapse" href="#mortgage-calculator-more" aria-expanded="false" aria-controls="mortgage-calculator-more">
+                                <span class="fa fa-chevron-down"></span>
+                                <span class="fa fa-chevron-up"></span>
+                            </a>
+                            <div class="collapse" id="mortgage-calculator-more" aria-expanded="false">
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <label class="lbl-no-wrap">Homeowners Insurance (monthly):</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">$</span>
+                                            <input type="text" class="form-control input-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <label class="lbl-no-wrap">HOA Dues (month):</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">$</span>
+                                            <input type="text" class="form-control input-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a id="116623-mc_clearEstimate" href="#" class="right pull-right" title="Reset">Reset</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

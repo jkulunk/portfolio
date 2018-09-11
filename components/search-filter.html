@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Search Filter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        .items {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .items li {
+            margin-bottom: 12px;
+        }
+
+        .items li a {
+            display: block;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+
+        var APPNS = APPNS || {};   // global namespace
+
+
+        APPNS.filterSearch = function (options) {
+
+            var sourceText = '';
+
+            if (typeof options !== 'object') {
+                var options = {};
+            }
+
+            $(options.source).on('keyup', function () {
+
+                sourceText = $(this).val().toLowerCase();
+
+                $.each(options.target, function () {
+                    if ($(this).text().toLowerCase().indexOf(sourceText) > -1) {
+                        $(this).css('display', 'block');
+                    } else {
+                        $(this).css('display', 'none');
+                    }
+                });
+
+                // optional - hide heading label when filtering
+                if (typeof options.toggleLabel !== 'undefined') {
+                    sourceText.length ? $(options.toggleLabel).hide() : $(options.toggleLabel).show();
+                }
+
+            });
+        };
+
+        $(function () {
+
+            APPNS.filterSearch({
+                source: $('#filter'),
+                target: $('.items li'),
+                toggleLabel: $('.category') // optional
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Search Filter</h1>
+        <p>JavaScript sample of a filtered search.</p>
+        <hr />
+
+        <div class="form-group">
+            <input id="filter" type="text" class="form-control form-control-sm" placeholder="Filter by..." />
+        </div>
+
+
+        <div class="h5 category">Languages</div>
+        <ul class="items">
+            <li>
+                <a href="#">JavaScript</a>
+                <span>Learn JavaScript and stay connected with the latest news created and curated by the JavaScript community</span>
+            </li>
+            <li>
+                <a href="#">CSS</a>
+                <span>Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written
+                    in HTML</span>
+            </li>
+        </ul>
+
+        <div class="h5 category">Frameworks</div>
+        <ul class="items">
+            <li>
+                <a href="#">jQuery</a>
+                <span>The Write Less, Do More, JavaScript Library</span>
+            </li>
+            <li>
+                <a href="#">LESS</a>
+                <span>Less extends CSS with dynamic behavior such as variables, mixins, operations and functions</span>
+            </li>
+            <li>
+                <a href="#">Angular</a>
+                <span>TypeScript-based open-source front-end web application platform</span>
+            </li>
+            <li>
+                <a href="#">Bootstrap - The most popular HTML, CSS, and JS library in the world</a>
+                <span>Build responsive, mobile-first projects on the web with the world's most popular front-end component library</span>
+            </li>
+            <li>
+                <a href="#">ASP.Net MVC</a>
+                <span>The Model-View-Controller (MVC) architectural pattern separates an application into three main components:
+                    the model, the view, and the controller</span>
+            </li>
+        </ul>
+
+    </div>
+</body>

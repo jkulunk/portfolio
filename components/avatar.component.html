@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Avatar Component Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <style type="text/css">
+        .monospace {
+            font-family: "Droid Sans Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+
+        .avatar {
+            display: inline-block;
+            margin-right: 20px;
+            box-shadow: 1px 1px 3px 0 rgba(39, 36, 37, 0.3);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            background-color: #38424a;
+            text-align: center;
+        }
+
+        .avatar.square {
+            border-radius: 12.5%;
+        }
+
+        .avatar .initials {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .avatar-lg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .avatar-lg .initials {
+            font-size: 40px;
+            line-height: 80px;
+        }
+
+        .avatar-md {
+            width: 60px;
+            height: 60px;
+        }
+
+        .avatar-md .initials {
+            font-size: 30px;
+            line-height: 60px;
+        }
+
+        .avatar-sm {
+            width: 40px;
+            height: 40px;
+        }
+
+        .avatar-sm .initials {
+            font-size: 20px;
+            line-height: 40px;
+        }
+
+        .avatar-xs {
+            width: 20px;
+            height: 20px;
+        }
+
+        .avatar-xs .initials {
+            font-size: 12px;
+            line-height: 20px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var makeAvatar = function (container) {
+                var colors = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#f1c40f", "#e67e22", "#e74c3c", "#f39c12", "#d35400"];
+
+                var setColor = function (initials) {
+                    return colors[Math.round((initials.charCodeAt(0) + initials.charCodeAt(initials.length - 1)) % (colors.length))]
+                };
+
+                $(container).find(".avatar").each(function () {
+                    $(this).css("background-color", setColor($(".initials", this).text()));
+                });
+            }
+
+            makeAvatar(".avatar-demo");
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact Card Avatars</h1>
+
+        <hr/>
+
+        <h3>Baseline</h3>
+
+        <div class="avatar avatar-lg">
+            <span class="initials monospace">LG</span>
+        </div>
+
+        <div class="avatar avatar-md">
+            <span class="initials monospace">MD</span>
+        </div>
+
+        <div class="avatar avatar-sm">
+            <span class="initials monospace">SM</span>
+        </div>
+
+        <div class="avatar avatar-xs">
+            <span class="initials monospace">XS</span>
+        </div>
+
+        <hr/>
+
+        <h3>Make it Square</h3>
+        <div>
+            <div class="avatar square avatar-lg">
+                <span class="initials monospace">LG</span>
+            </div>
+
+            <div class="avatar square avatar-md">
+                <span class="initials monospace">MD</span>
+            </div>
+
+            <div class="avatar square avatar-sm">
+                <span class="initials monospace">SM</span>
+            </div>
+
+            <div class="avatar square avatar-xs">
+                <span class="initials monospace">XS</span>
+            </div>
+        </div>
+        <hr/>
+
+
+        <h3>Optional Color Function</h3>
+        <p>Consistent color association. Initial's character codes are run against an array of preset colors.</p>
+        <div class="avatar-demo">
+            <div class="avatar avatar-lg">
+                <span class="initials monospace">LG</span>
+            </div>
+
+            <div class="avatar avatar-md">
+                <span class="initials monospace">MD</span>
+            </div>
+
+            <div class="avatar avatar-sm">
+                <span class="initials monospace">SM</span>
+            </div>
+
+            <div class="avatar avatar-xs">
+                <span class="initials monospace">XS</span>
+            </div>
+            <hr/>
+
+            <div class="avatar square avatar-lg">
+                <span class="initials monospace">LG</span>
+            </div>
+
+            <div class="avatar square avatar-md">
+                <span class="initials monospace">MD</span>
+            </div>
+
+            <div class="avatar square avatar-sm">
+                <span class="initials monospace">SM</span>
+            </div>
+
+            <div class="avatar square avatar-xs">
+                <span class="initials monospace">XS</span>
+            </div>
+        </div>
+
+        <hr/>
+
+
+    </div>
+</body>
+
+</html>
