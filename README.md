@@ -12,7 +12,8 @@ A selection of recent works:
 * [HTML email template for new user registration](components/html-email.html)
 * [Mortgage Calculator Component](components/mortgage-calculator.html)
 * [Tax and Assessments Component](components/tax-assessments.html)
-* [Gallery of featured items in a grid layout](components/gallery-grid.html)
+* [Gallery Grid ver 1](components/gallery-grid.html)
+* [Gallery Grid ver 2](exercises/gallery/index.html)
 * [Search Filter Component](components/search-filter.html)
 * [Single-line Tab Component](components/tab-bar.html)
 
@@ -56,7 +57,6 @@ All wireframes produced with Balsamiq Mockups.
 
 ## Links to Live Websites
 
-* [Chase International](http://www.chaseinternational.com)
 * [Century 21 M&M](http://www.c21mm.com)
 * [Hunt Real Estate](http://www.huntrealestate.com)
 * [Berkshire Hathaway Fox & Roach](http://www.foxroach.com)
