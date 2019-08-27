@@ -22,9 +22,9 @@ A selection of recent works:
 
 ## Design Comps
 
-* [Mobile Dashboard in Sketch](comps/mtx-theme-light.png)
-* [Mobile Dashboard Mobile in Sketch](comps/mtx-theme-light-mobile.png)
-* [Mobile Dashboard Mobile Menu in Sketch](comps/mtx-theme-light-mobile-menu.png)
+* [Dashboard in Sketch](comps/mtx-theme-light.png)
+* [Dashboard Mobile in Sketch](comps/mtx-theme-light-mobile.png)
+* [Dashboard Mobile Menu in Sketch](comps/mtx-theme-light-mobile-menu.png)
 * [Combined Search in Sketch](comps/mtx-neapolitan-CriteriaMap.png)
 * [Account Registration in Sketch](comps/tres-account-contact-info.png)
 * [Dashboard #2 in Sketch](comps/tres-dashboard.png)
