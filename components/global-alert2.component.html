@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <style>
         .alert {
             position: absolute;
@@ -19,6 +17,17 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             border-top: none;
+            opacity: 0;
+        }
+
+        .in {
+            opacity: 1;
+            transition: opacity .25s ease-in;
+        }
+
+        .out {
+            opacity: 0;
+            transition: opacity 1s ease-out;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -37,9 +46,17 @@
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Logo</a>
     </nav>
-    <div id="alert1" class="alert fade show"></div>
+    <div id="alert1" class="alert shadow"></div>
+
     <div class="container">
         <h1>Global Alert Component</h1>
+        <p>Available options are</p>
+        <ul>
+            <li>Type - Bootstrap alert classes (alert-info, alert-success, etc)</li>
+            <li>Message</li>
+            <li>Timeout - Delay before the alert closes automatically</li>
+            <li>Dismissable - Show/Hide the close button</li>
+        </ul>
         <button id="button3" type="button" class="btn btn-info" onclick="triggerInfo();">Trigger Info</button>
     </div>
 
@@ -52,31 +69,35 @@
 
         var showAlert = function (options) {
 
-            // disable btn
-            options.targetBtn = event.target;
-            options.targetBtn.disabled = true;
-
+            // disable button after click
+            options.triggerBtn = event.target;
+            options.triggerBtn.disabled = true;
 
             // build message
             var message = document.createElement('span');
             message.innerText = options.message;
+            document.getElementById(options.targetId).appendChild(message);
 
             // build close button
-            var closeBtn = document.createElement('button');
-            closeBtn.setAttribute('class', 'close');
-            closeBtn.setAttribute('data-target', options.targetId);
-            closeBtn.setAttribute('id', options.targetId + '-close');
-            closeBtn.innerText = 'x';
+            if (options.dismissable) {
+                var closeBtn = document.createElement('button');
+                closeBtn.setAttribute('class', 'close');
+                closeBtn.setAttribute('data-target', options.targetId);
+                closeBtn.setAttribute('id', options.targetId + '-close');
+                closeBtn.innerText = 'x';
+                document.getElementById(options.targetId).appendChild(closeBtn);
+                document.getElementById(options.targetId).classList.add('alert-dismissible');
 
-            document.getElementById(options.targetId).appendChild(message);
-            document.getElementById(options.targetId).appendChild(closeBtn);
+                closeBtn.addEventListener('click', function () {
+                    handleClose(options);
+                });
+
+            }
+
             document.getElementById(options.targetId).classList.add(options.type);
             document.getElementById(options.targetId).classList.add('in');
 
-            closeBtn.addEventListener('click', function () {
-                handleClose(options);
-            });
-
+            // auto close
             setTimer = setTimeout(function () {
                 handleClose(options);
             }, options.timeout);
@@ -84,11 +105,19 @@
         };
 
         var handleClose = function (options) {
-            document.getElementById(options.targetId).classList.remove('in');
-            document.getElementById(options.targetId).classList.remove(options.type);
-            document.getElementById(options.targetId).innerHTML = '';
-            clearTimeout(setTimer);
-            options.targetBtn.disabled = false;
+
+            document.getElementById(options.targetId).classList.add('out');
+
+            setTimeout(function () {
+                document.getElementById(options.targetId).classList.remove('out');
+                document.getElementById(options.targetId).classList.remove('in');
+                document.getElementById(options.targetId).classList.remove(options.type);
+                document.getElementById(options.targetId).innerHTML = '';
+                clearTimeout(setTimer);
+                options.triggerBtn.disabled = false;
+
+            }, 1000); // delay must match css transition
+
             return;
         };
 
@@ -98,6 +127,7 @@
             options.message = options.message;
             options.type = options.type || 'alert-info';
             options.timeout = options.timeout || 10000;
+            options.dismissable = options.dismissable;
 
             if (options.targetId) {
                 showAlert(options);
@@ -119,8 +149,10 @@
 
         alertMessage.init({
             targetId: 'alert1',
+            type: 'alert-success',
             message: 'Just letting you know about something. Closing in 5...4...3...',
             timeout: 6000,
+            dismissable: true
         });
 
     }
