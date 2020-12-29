@@ -16,7 +16,6 @@ A selection of recent works:
 * [Mortgage Calculator Component](components/mortgage-calculator.html)
 * [Tax and Assessments Component](components/tax-assessments.html)
 * [Gallery Grid ver 1](components/gallery-grid.html)
-* [Gallery Grid ver 2](exercises/gallery/index.html)
 * [Search Filter Component](components/search-filter.html)
 
 
@@ -25,14 +24,12 @@ A selection of recent works:
 * [Dashboard in Sketch](comps/mtx-theme-light.png)
 * [Dashboard Mobile in Sketch](comps/mtx-theme-light-mobile.png)
 * [Dashboard Mobile Menu in Sketch](comps/mtx-theme-light-mobile-menu.png)
-* [Combined Search in Sketch](comps/mtx-neapolitan-CriteriaMap.png)
 * [Account Registration in Sketch](comps/tres-account-contact-info.png)
 * [Dashboard #2 in Sketch](comps/tres-dashboard.png)
 * [Product Page in Photoshop](comps/tres-homepage-rev4.png)
-* [Product Page Mobile in Photoshop](comps/tres-homepage-rev2a.png)
+* [Product Page #2 in Photoshop](comps/tres-homepage-rev2a.png)
 * [Product Selector Page made with Sketch](comps/app-product-selector.pdf)
 * [Shop Tile Component made with Photoshop](comps/tile-component-comp.jpg)
-* [Graphic for Shop tile made with Photoshop](comps/map-graphic.jpg)
 * [Product Dashboard](comps/app-dashboard.jpg)
 * [Product Dashboard Mobile](comps/app-dashboard-m.jpg)
 * [Contact Details](comps/app-contact.jpg)
